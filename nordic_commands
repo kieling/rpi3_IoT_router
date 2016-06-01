@@ -1,0 +1,55 @@
+# Run as root
+sudo su
+
+# Run radvd first 
+# set ipv6 forwarding
+echo 1 > /proc/sys/net/ipv6/conf/all/forwarding
+# restart radvd
+service radvd restart
+# radvd status
+service radvd status
+
+# Mount debugfs file system.
+mount -t debugfs none /sys/kernel/debug
+# Load 6LoWPAN module.
+modprobe bluetooth_6lowpan
+# Enable the bluetooth 6lowpan module.
+echo 1 > /sys/kernel/debug/bluetooth/6lowpan_enable
+# Look for available HCI devices.
+hciconfig
+# Reset HCI device - for example hci0 device.
+hciconfig hci0 reset
+# Read 00:AA:BB:XX:YY:ZZ address of the nRF5x device.
+hcitool lescan
+# Connect to the device.
+echo "connect 00:AA:BB:XX:YY:ZZ 1" > /sys/kernel/debug/bluetooth/6lowpan_control
+# Check if you have established a connection.
+ifconfig
+
+# add prefixes
+# after prefix added ping
+
+ping 2005::2e5:19ff:fe57:f219
+
+
+# Try to ping the device using its link-local address, for example, on bt0 interface.
+ping6 -i bt0 fe80::2aa:bbff:fexx:yyzz
+# Disconnect from the device.
+echo "disconnect 00:AA:BB:XX:YY:ZZ" > /sys/kernel/debug/bluetooth/6lowpan_control
+# Check if there are active connections left.
+ifconfig
+
+
+#ipv6 multicast all nodes
+ping6 -I bt0 ff02::1
+
+
+
+# add prefixes to eth0 and bt0
+ifconfig bt0 add 2005::1/128
+ifconfig bt0 add 2005::/64
+ifconfig eth0 add 2004:abc::1/128
+ifconfig eth0 add 2004:abc::/64
+services radvd restart
+
+

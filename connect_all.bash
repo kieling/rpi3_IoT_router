@@ -15,6 +15,7 @@ sudo pkill --signal SIGINT hcitool
 $COMMAND | while read -r arg1 arg2; 
 	# do echo "$arg1"
 	do sudo echo "connect $arg1 1" > /sys/kernel/debug/bluetooth/6lowpan_control; 
+	# add sleep here? 
 done
 
 echo "Connection done"
