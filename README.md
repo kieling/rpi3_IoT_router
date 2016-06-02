@@ -35,5 +35,5 @@ Scripts:
 	Connects to a single device
 - nordic commands:<br>
 	Shows some commands to be used with the Headless router
-- ipv6_status_service.bash
+- ipv6_status_service.bash <br>
 	Service to control connected IPv6 modules and log their local ips

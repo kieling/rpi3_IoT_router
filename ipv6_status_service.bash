@@ -7,7 +7,7 @@ MYMAC="fe80::ba27:ebff:febe:1501"
 
 OUTPUT="connected_modules.txt"
 
-SLEEPTIME=2s
+SLEEPTIME=10s
 
 # ping broadcast to the starting ipv6 of our modules
 echo "Router MAC Address: $MYMAC"
