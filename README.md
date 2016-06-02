@@ -1,16 +1,16 @@
 
 Todo:
 - add IPv6 connected modules to the front-end 
-- test last created scripts
 - test functionality with gateway and router on 
 - Installation Guide
+- analyse security issues when pairing (not COAP)
 
 Workaround: 
-- start IPv6
-- connect to all IPv6 modules (or something different?) 
+- Start IPv6 router
+- connect to all IPv6 modules and start daemon to control them
 - start gateway and navible
 
-Status: 
+Problems:
 If IPv6 started and then Navible:
 - It works, and Navible dosnt see the IPv6 modules
 
@@ -35,4 +35,5 @@ Scripts:
 	Connects to a single device
 - nordic commands
 	Shows some commands to be used with the Headless router
-
+- ipv6_status_service.bash
+	Service to control connected IPv6 modules and log their local ips
