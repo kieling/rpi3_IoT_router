@@ -1,7 +1,7 @@
 <div>
     <h1>{{title}}</h1>
     <div class='breadcrumbs'>
-      All Nodes
+      BT LE 4.0 Nodes
     </div>
     <table>
       <thead>
@@ -32,6 +32,36 @@
               <td>
                 {{this.advertisement.localName}}
               </td>
+            </tr>
+          {{/each}}
+        {{/each}}
+      </tbody>
+    </table>
+    
+    
+    <div class='breadcrumbs'>
+      BT 4.2 6Lo Nodes
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Local Address</th>
+          <th>Global Addres</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each nodes}}
+          {{#each this}}
+            <tr>
+                
+              <td>
+                {{this.advertisement.localName}}
+              </td>
+              
+              <td>
+                {{this.advertisement.localName}}
+              </td>
+              
             </tr>
           {{/each}}
         {{/each}}
