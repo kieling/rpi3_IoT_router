@@ -19,21 +19,21 @@ If Navible started and then IPv6 Router:
 and once we try to use it with Navible the IPv6 connection turns off
 
 Scripts:
-- setup_all.sh
+- setup_all.sh:<br>
 	Start the IPv6 router, connect to all IPv6 devices, start the bt gateway and the front end. 
-- start_gateway.sh
+- start_gateway.sh:<br>
 	Start the BT Gateway and NaviBLE front end. 
-- start_nordic.sh
+- start_nordic.sh<br>
 	Start the Nordic Headless Router
-- reset_hci.sh
+- reset_hci.sh:<br>
 	Reset HCI0 communication due to some bugs with lescan
-- ping_broadcast.sh
+- ping_broadcast.sh:<br>
 	Ping broadcast to IPv6 local interface
-- connect_all.bash
+- connect_all.bash:<br>
 	Tries to connect to all devices found by a hcitool lescan
-- connect_to_device.sh 
+- connect_to_device.sh:<br>
 	Connects to a single device
-- nordic commands
+- nordic commands:<br>
 	Shows some commands to be used with the Headless router
 - ipv6_status_service.bash
 	Service to control connected IPv6 modules and log their local ips
