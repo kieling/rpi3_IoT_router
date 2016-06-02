@@ -9,6 +9,9 @@ echo 1 > /sys/kernel/debug/bluetooth/6lowpaw_enable
 
 #echo "connect 00:E5:19:57:F2:19 1" > /sys/kernel/debug/bluetooth/6lowpan_control
 
+# connect all devices
+sudo bash connect_all.bash
+
 # wait 2 seconds
 sleep 2
 

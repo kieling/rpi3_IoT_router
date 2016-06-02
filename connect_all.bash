@@ -5,6 +5,7 @@
 
 COMMAND="cat result.txt"
 
+# TODO : add grep to the hcitool lescan output to check if it is bugged, then restart hci 
 echo "Scan and connect to all devices..."
 # Lescan for 5 seconds, then kill it
 sudo hcitool lescan > result.txt & sleep 5
