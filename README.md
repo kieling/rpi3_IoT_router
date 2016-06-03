@@ -13,7 +13,7 @@ The base codes used here were provided by Nordic Semiconductors and Bluetooth SI
 - Navible Front-End: front-end for managing BT devices connected to the gateway and have an overview of connected IPv6 devices. 
 
 ###Installation:
-- Check SETUP.md
+- Check `SETUP.md`
 
 ###Workaround: 
 Because of problems between the Router and the Gateway we have to do the following:
@@ -32,21 +32,21 @@ If Navible started and then IPv6 Router:
 and once we try to use it with Navible the IPv6 connection turns off
 
 ###Scripts:
-- setup_all.sh:<br>
+- `setup_all.sh`:<br>
 	Start the IPv6 router, connect to all IPv6 devices, start the bt gateway and the front end. 
-- start_gateway.sh:<br>
+- `start_gateway.sh`:<br>
 	Start the BT Gateway and NaviBLE front end. 
-- start_nordic.sh<br>
+- `start_nordic.sh`:<br>
 	Start the Nordic Headless Router
-- reset_hci.sh:<br>
+- `reset_hci.sh`:<br>
 	Reset HCI0 communication due to some bugs with lescan
-- ping_broadcast.sh:<br>
+- `ping_broadcast.sh`:<br>
 	Ping broadcast to IPv6 local interface
-- connect_all.bash:<br>
+- `connect_all.bash`:<br>
 	Tries to connect to all devices found by a hcitool lescan
-- connect_to_device.sh:<br>
+- `connect_to_device.sh`:<br>
 	Connects to a single device
-- nordic commands:<br>
+- `nordic commands`:<br>
 	Shows some commands to be used with the Headless router
-- ipv6_status_service.bash <br>
+- `ipv6_status_service.bash`: <br>
 	Service to control connected IPv6 modules and log their local ips
