@@ -2,8 +2,10 @@
 Todo:
 - add IPv6 connected modules to the front-end 
 - test functionality with gateway and router on 
-- Installation Guide
 - analyse security issues when pairing (not COAP)
+
+Installation:
+- Check SETUP.md
 
 Workaround: 
 - Start IPv6 router
