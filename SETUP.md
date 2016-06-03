@@ -1,4 +1,4 @@
-# How to install the IoT router + gateway
+# How to install the IoT Gateway-Router
 
 ### Installing Dependencies
 - Run a full update on your RPI:<br>
@@ -38,4 +38,37 @@ Go to /boot and execute:<br>
 `sudo sh -c 'echo "kernel=vmlinuz-4.4.8-kernelimg-v7+" >> config.txt'`<br>
 - Reboot your Pi and it's done. <br>
 If something goes wrong you can edit the config.txt in your sd card and comment the line with the new kernel.<br>
+
+### Configuring Radvd
+Add bt0 and eth0 interface into the file /etc/radvd.conf, so that we provide a global ipv6 address for the bt modules. 
+```
+interface eth0
+
+{
+
+    AdvSendAdvert on;
+    prefix 2004:abc::/64
+    { 
+        AdvOnLink on;
+        AdvAutonomous on;
+        AdvRouterAddr on;
+    };
+    route ::/0
+    {
+    };
+
+};
+
+interface bt0
+{
+    AdvSendAdvert on;
+    prefix 2005::2/64
+    {
+        AdvOnLink off;
+        AdvAutonomous on;
+       AdvRouterAddr on; 
+    };
+};
+```
+Restart Radvd: `sudo service radvd restart`
 
