@@ -1,18 +1,29 @@
+#IoT Gateway-Router for the Raspberry Pi 3
+The base codes used here were provided by Nordic Semiconductors and Bluetooth SIG. This project aims to combine the two concepts introduced by them on a Raspberry Pi 3: IPv6 Headless Router and Bluetooth Gateway Smart. Codes were adapted to make em functional on a Raspberry Pi 3.
 
-Todo:
-- add IPv6 connected modules to the front-end 
-- test functionality with gateway and router on 
-- analyse security issues when pairing (not COAP)
+###Todo:
+- [ ] Finish SETUP.md
+- [ ] Add IPv6 connected modules to the front-end 
+- [ ] Test functionality with gateway and router on (router seems to be unstable)
+- [ ] Analyse how to secure BT handshake (before stablishing connection)
 
-Installation:
+###Functionality:
+- Router: provide a global IPv6 to every connected device (BT 4.2), making it accessible from outside. Other functionalities are provided by upper level protocols (CoAP).
+- Gateway: make older BT devices (BTLE 4.0) accessable and manageable from outside, providing BT functionalities of every connected module over internet. 
+- Navible Front-End: front-end for managing BT devices connected to the gateway and have an overview of connected IPv6 devices. 
+
+###Installation:
 - Check SETUP.md
 
-Workaround: 
-- Start IPv6 router
-- connect to all IPv6 modules and start daemon to control them
-- start gateway and navible
+###Workaround: 
+Because of problems between the Router and the Gateway we have to do the following:
+- First start IPv6 router
+- Connect all IPv6 modules and start daemon to control them
+- Start Gateway and Navible front-end
 
-Problems:
+###Problems:
+Headless router seems to be unstable, sometimes it works fine for hours, sometimes connection keeps dropping, not sure why.
+
 If IPv6 started and then Navible:
 - It works, and Navible dosnt see the IPv6 modules
 
@@ -20,7 +31,7 @@ If Navible started and then IPv6 Router:
 - We can connect to the IPv6 module, but we cannot ping it, it is still showing on Navible
 and once we try to use it with Navible the IPv6 connection turns off
 
-Scripts:
+###Scripts:
 - setup_all.sh:<br>
 	Start the IPv6 router, connect to all IPv6 devices, start the bt gateway and the front end. 
 - start_gateway.sh:<br>
