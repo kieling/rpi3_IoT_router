@@ -1,12 +1,4 @@
 <div>
-   <head>
-   <script>
-   function readfile() {
-       alert(document.getElementById('iframe').contentDocument.body.firstChild.innerHTML);
-   }
-   </script>
-   </head>
-   
    <!-- <h1>{{title}}</h1> -->
     <!-- <div class='breadcrumbs'> --> 
     <br>
@@ -60,21 +52,24 @@
         </tr>
       </thead>
       <tbody>
-        {{#each nodes}}
-          {{#each this}}
-            <tr>
-                
-              <td>
-                <iframe id='iframe' src = 'test.txt' onload='readfile()'> </iframe>
-              </td>
+            <?php
+         	$f = fopen("../../../../connected_modules.txt", "r");
+         
+         	// Read line by line until end of file
+         	while (!feof($f)) { 
+         	// Make an array using comma as delimiter
+         	   $arrM = explode(",",fgets($f)); 
+         
               
-              <td>
-                <iframe id='iframe' src = 'test.txt' onload='readfile()'> </iframe>
-              </td>
-              
-            </tr>
-          {{/each}}
-        {{/each}}
+               
+         	// Write links (get the data in the array)
+         	   echo " <tr> <td><li><a href='http://" . $arrM[1] . "'>" . $arrM[0]. "</a></li></td> <td></td> </tr>"; 
+         	}
+         	fclose($f);
+         	?>
+         
+            
+        
       </tbody>
     </table>
 </div>
