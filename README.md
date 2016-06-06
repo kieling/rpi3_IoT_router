@@ -3,7 +3,7 @@ The base codes used here were provided by Nordic Semiconductors and Bluetooth SI
 
 ###Todo:
 - [ ] Finish SETUP.md
-- [ ] Add IPv6 connected modules to the front-end 
+- [x] Add IPv6 connected modules to the front-end 
 - [ ] Add Reconnect service to support failures (X tries)
 - [ ] Test functionality with gateway and router on (router seems to be unstable)
 - [ ] Analyse how to secure BT handshake (before stablishing connection)
