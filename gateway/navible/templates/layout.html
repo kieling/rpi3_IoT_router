@@ -7,6 +7,42 @@
         <script src="/bean.js" type="text/javascript"></script>
         <script src="/bean_message.js" type="text/javascript"></script>
         <script src="/bean_data.js" type="text/javascript"></script>
+        <script>
+        var fs = require('fs');
+        
+        fs.readFile('public/data.csv', function(err,data){
+            if(err) {
+                console.error("Could not open file: %s", err);
+                process.exit(1);
+            }
+            processData(data); 
+            console.log(data);
+        });
+        
+        function processData(data) {
+            var lines = data.split(/\r\n|\n/);
+            
+            //Set up the data arrays
+            var time = [];
+            var data1 = [];
+            var data2 = [];
+            var data3 = [];
+            
+            var table="<tr><th>IP1</th><th>IP2</th></tr>";
+            
+            var headings = lines[0].split(','); // Splice up the first row to get the headings
+            
+            for (var j=1; j<lines.length; j++) {
+                var values = lines[j].split(','); // Split up the comma seperated values
+                table += "<tr><td>"   +
+                            values[0] +
+                         "</td><td>"  +
+                            values[1] +
+                         "</td></tr>";
+            }
+            document.getElementById("table1").innerHTML = table;
+        }
+        </script>
     </head>
     <body>
         <h1>Seminar Work <br> IoT Gateway + Router Explorer</h1>
