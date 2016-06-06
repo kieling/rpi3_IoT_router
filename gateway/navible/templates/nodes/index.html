@@ -1,4 +1,12 @@
 <div>
+   <head>
+   <script>
+   function readfile() {
+       alert(document.getElementById('iframe').contentDocument.body.firstChild.innerHTML);
+   }
+   </script>
+   </head>
+   
    <!-- <h1>{{title}}</h1> -->
     <!-- <div class='breadcrumbs'> --> 
     <br>
@@ -57,11 +65,11 @@
             <tr>
                 
               <td>
-                {{this.advertisement.localName}}
+                <iframe id='iframe' src = 'test.txt' onload='readfile()'> </iframe>
               </td>
               
               <td>
-                {{this.advertisement.localName}}
+                <iframe id='iframe' src = 'test.txt' onload='readfile()'> </iframe>
               </td>
               
             </tr>
