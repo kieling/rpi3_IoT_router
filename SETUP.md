@@ -7,7 +7,7 @@
 `sudo apt-get dist-upgrade`<br>
 `sudo rpi-update`<br>
 
-- Dependencies for IPv6 Router:<br>
+- Dependencies for Nordic Headless Router:<br>
 `sudo apt-get install bluez radvd libcap-ng0`<br>
 
 - Dependencies for SIG Gateway Router<br>
