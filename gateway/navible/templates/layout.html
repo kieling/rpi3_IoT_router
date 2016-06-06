@@ -30,7 +30,8 @@
                 var data3 = [];
 
                // var table="<tr><th>IP1</th><th>IP2</th></tr>";
-                var table="";
+                var table="<table><thead><tr><th>Local Address</th><th>Global Addres</th> </tr> </thead><tbody>";
+                
                 var headings = lines[0].split(','); // Splice up the first row to get the headings
 
                 for (var j=1; j<lines.length; j++) {
@@ -41,6 +42,7 @@
                                 values[1] +
                              "</td></tr>";
                 }
+                table += "</tbody></table>";
                 document.getElementById("table1").innerHTML = table;
             }
         })
