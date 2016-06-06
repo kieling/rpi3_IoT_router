@@ -14,7 +14,7 @@
          // AJAX in the data file
             $.ajax({
                 type: "GET",
-                url: "data.csv",
+                url: "/data.csv",
                 dataType: "csv",
                 success: function(data) {processData(data);}
                 });
