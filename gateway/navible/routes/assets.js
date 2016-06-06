@@ -28,4 +28,12 @@ module.exports = [
       reply.file('public/bean_data.js');
     }
   }
+  ,
+   {
+    method: 'GET',
+    path: '/data.csv',
+    handler: function (request, reply) {
+      reply.file('public/data.csv');
+    }
+  }
 ]
