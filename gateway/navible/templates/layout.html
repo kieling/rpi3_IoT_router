@@ -8,13 +8,12 @@
         <script src="/bean_message.js" type="text/javascript"></script>
         <script src="/bean_data.js" type="text/javascript"></script>
         
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
-          <script>
+        <script>
         $(document).ready(function() {
          // AJAX in the data file
             $.ajax({
                 type: "GET",
-                url: "public/data.csv",
+                url: "/data.csv",
                 dataType: "csv",
                 success: function(data) {processData(data);}
                 });
