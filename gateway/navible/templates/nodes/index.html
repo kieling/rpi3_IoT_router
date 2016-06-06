@@ -1,3 +1,40 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+<script>
+$(document).ready(function() {
+// AJAX in the data file
+   $.ajax({
+       type: "GET",
+       url: "data.csv",
+       dataType: "csv",
+       success: function(data) {processData(data);}
+       });
+
+   // Let's process the data from the data file
+   function processData(data) {
+       var lines = data.split(/\r\n|\n/);
+
+       //Set up the data arrays
+       var time = [];
+       var data1 = [];
+       var data2 = [];
+       var data3 = [];
+
+       var table="<tr><th>IP1</th><th>IP2</th></tr>";
+
+       var headings = lines[0].split(','); // Splice up the first row to get the headings
+
+       for (var j=1; j<lines.length; j++) {
+           var values = lines[j].split(','); // Split up the comma seperated values
+           table += "<tr><td>"   +
+                       values[0] +
+                    "</td><td>"  +
+                       values[1] +
+                    "</td></tr>";
+       }
+       document.getElementById("table1").innerHTML = table;
+   }
+})
+</script>
 
 <div>
    <!-- <h1>{{title}}</h1> -->
@@ -43,7 +80,9 @@
     <!--  <div class='breadcrumbs'>-->
     <br>
     <h2><center>BT 4.2 6Lo Nodes</center></h2>
-    <!-- </div>-->
+    <div id="table1"></div>
+    
+    <!-- </div>
     <table>
       <thead>
         <tr>
@@ -52,8 +91,7 @@
         </tr>
       </thead>
       <tbody>
-         <iframe src="connected_modules.txt" frameborder="0" height="400" width="95%"></iframe>
        
       </tbody>
-    </table>
+    </table> -->
 </div>
