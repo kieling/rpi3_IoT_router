@@ -1,3 +1,4 @@
+
 <div>
    <!-- <h1>{{title}}</h1> -->
     <!-- <div class='breadcrumbs'> --> 
@@ -51,19 +52,8 @@
         </tr>
       </thead>
       <tbody>
-         
-<?php
-$file_handle = fopen("../../../../connected_modules.txt", "rb");
-
-while (!feof($file_handle) ) {
-    $line_of_text = fgets($file_handle);
-    $parts = explode(PHP_EOL, $line_of_text);
-    echo "<tr><td height='119'>$parts[0]</td><td>$parts[1]</td></tr>";
-}
-fclose($file_handle);
-?>
-            
-        
+         <iframe src="../../../../connected_modules.txt" frameborder="0" height="400" width="95%"></iframe>
+       
       </tbody>
     </table>
 </div>
