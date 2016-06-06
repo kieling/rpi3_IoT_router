@@ -10,7 +10,7 @@
         <script>
         var fs = require('fs');
         
-        fs.readFile('public/data.csv', function(err,data){
+        fs.readFile('/data.csv', function(err,data){
             if(err) {
                 console.error("Could not open file: %s", err);
                 process.exit(1);
