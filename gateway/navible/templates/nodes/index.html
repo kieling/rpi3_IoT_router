@@ -38,8 +38,7 @@
         {{/each}}
       </tbody>
     </table>
-    
-    
+
     <!--  <div class='breadcrumbs'>-->
     <br>
     <h2><center>BT 4.2 6Lo Nodes</center></h2>
@@ -52,22 +51,17 @@
         </tr>
       </thead>
       <tbody>
-            <?php
-         	$f = fopen("../../../../connected_modules.txt", "r");
          
-         	// Read line by line until end of file
-         	while (!feof($f)) { 
-         	// Make an array using comma as delimiter
-         	   $arrM = explode(",",fgets($f)); 
-         
-              
-               
-         	// Write links (get the data in the array)
-         	   echo " <tr> <td><li><a href='http://" . $arrM[1] . "'>" . $arrM[0]. "</a></li></td> <td></td> </tr>"; 
-         	}
-         	fclose($f);
-         	?>
-         
+<?php
+$file_handle = fopen("../../../../connected_modules.txt", "rb");
+
+while (!feof($file_handle) ) {
+    $line_of_text = fgets($file_handle);
+    $parts = explode(PHP_EOL, $line_of_text);
+    echo "<tr><td height='119'>$parts[0]</td><td>$parts[1]</td></tr>";
+}
+fclose($file_handle);
+?>
             
         
       </tbody>
