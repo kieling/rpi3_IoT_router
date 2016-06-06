@@ -34,7 +34,7 @@
                 
                 var headings = lines[0].split(','); // Splice up the first row to get the headings
 
-                for (var j=1; j<lines.length; j++) {
+                for (var j=1; j<lines.length-1; j++) {
                     var values = lines[j].split(','); // Split up the comma seperated values
                     table += "<tr><td>"   +
                                 values[0] +
