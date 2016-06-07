@@ -3,7 +3,7 @@
 ### Installing Dependencies
 - Run a full update on your RPI:<br>
 `sudo apt-get update`<br>
-`sudo apt-get upgrad`<br>
+`sudo apt-get upgrade`<br>
 `sudo apt-get dist-upgrade`<br>
 `sudo rpi-update`<br>
 
@@ -68,5 +68,5 @@ interface bt0
     };
 };
 ```
-Restart Radvd: `sudo service radvd restart`
+After that restart the Pi. To start the router some things have to be configured but they are all done with the `start_nordic.sh` script. Check there if you want details. 
 
