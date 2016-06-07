@@ -1,5 +1,8 @@
 # How to install the IoT Gateway-Router
 
+### Clone this repository
+`git clone https://github.com/kieling/pi3_iot_router`
+
 ### Installing Dependencies
 - Run a full update on your RPI:<br>
 `sudo apt-get update`<br>
@@ -19,7 +22,7 @@
 `sudo apt-get install git kernel-package build-essential bc`<br>
 
 ### Compiling the 6LoWPAN kernel
-You can try to use the pre-compiled kernels available on kernel_imgs, not sure if they will work on other kernel versions. 
+You can try to use the pre-compiled kernels available on `/kernel_imgs`, I am not sure if they will work with different kernel versions. 
 - Clone the kernel repository (takes a while)<br>
 `git clone https://github.com/raspberrypi/linux.git`<br>
 - Configure the build inside the raspbian/kernel/linux folder. <br>
@@ -69,4 +72,3 @@ interface bt0
 };
 ```
 After that restart the Pi. To start the router some things have to be configured but they are all done with the `start_nordic.sh` script. Check there if you want details. 
-
