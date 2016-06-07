@@ -2,7 +2,7 @@
 The base codes used here were provided by Nordic Semiconductors and Bluetooth SIG. This project aims to combine the two concepts introduced by them on a Raspberry Pi 3: IPv6 Headless Router and Bluetooth Gateway Smart. Codes were adapted to make em functional on a Raspberry Pi 3.
 
 ###Todo:
-- [ ] Finish SETUP.md
+- [x] Finish SETUP.md
 - [x] Add IPv6 connected modules to the front-end 
 - [x] Add Reconnect service to support failures (X tries)
 - [ ] Fix HCI LESCAN error @ connect_all.bash - Try to update Bluez and check if it solves the problem
@@ -15,7 +15,10 @@ The base codes used here were provided by Nordic Semiconductors and Bluetooth SI
 - Navible Front-End: front-end for managing BT devices connected to the gateway and have an overview of connected IPv6 devices. 
 
 ###Installation:
-- Check `SETUP.md`
+- Check `SETUP.md` or get a img dump of the microSD I used (link to be provided). 
+
+###Starting the router
+- Turn the Pi on with everything installed, run `setup_all.sh`. You can also add it to `/etc/rc.local/` or `/etc/init.d/` to start it on boot. 
 
 ###Workaround: 
 Because of problems between the Router and the Gateway we have to do the following:
