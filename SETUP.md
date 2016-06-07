@@ -43,9 +43,7 @@ If something goes wrong you can edit the config.txt in your sd card and comment 
 Add bt0 and eth0 interface into the file /etc/radvd.conf, so that we provide a global ipv6 address for the bt modules. 
 ```
 interface eth0
-
 {
-
     AdvSendAdvert on;
     prefix 2004:abc::/64
     { 
