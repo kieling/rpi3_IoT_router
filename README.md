@@ -4,7 +4,8 @@ The base codes used here were provided by Nordic Semiconductors and Bluetooth SI
 ###Todo:
 - [ ] Finish SETUP.md
 - [x] Add IPv6 connected modules to the front-end 
-- [ ] Add Reconnect service to support failures (X tries)
+- [x] Add Reconnect service to support failures (X tries)
+- [ ] Fix HCI LESCAN error @ connect_all.bash - Try to update Bluez and check if it solves the problem
 - [ ] Test functionality with gateway and router on (router seems to be unstable)
 - [ ] Analyse how to secure BT handshake (before stablishing connection)
 
@@ -50,4 +51,4 @@ and once we try to use it with Navible the IPv6 connection turns off
 - `nordic commands`:<br>
 	Shows some commands to be used with the Headless router
 - `ipv6_status_service.bash`: <br>
-	Service to control connected IPv6 modules and log their local ips
+	Daemon that manages active connections and search for new modules
