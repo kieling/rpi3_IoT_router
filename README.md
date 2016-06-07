@@ -15,7 +15,7 @@ The base codes used here were provided by Nordic Semiconductors and Bluetooth SI
 - Navible Front-End: front-end for managing BT devices connected to the gateway and have an overview of connected IPv6 devices. 
 
 ###Installation:
-- Check `SETUP.md` or get a img dump of the microSD I used (link to be provided). 
+- Check `SETUP.md` or get a img dump of the microSD I used (link to be provided) and write it to your microSD.
 
 ###Starting the router
 - Turn the Pi on with everything installed, run `setup_all.sh`. You can also add it to `/etc/rc.local/` or `/etc/init.d/` to start it on boot. 
