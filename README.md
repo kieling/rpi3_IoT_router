@@ -5,8 +5,8 @@ The base codes used here were provided by Nordic Semiconductors and Bluetooth SI
 - [x] Finish SETUP.md
 - [x] Add IPv6 connected modules to the front-end 
 - [x] Add Reconnect service to support failures (X tries)
-- [ ] Fix HCI LESCAN error @ connect_all.bash - Try to update Bluez and check if it solves the problem
-- [ ] Test functionality with gateway and router on (router seems to be unstable)
+- [ ] Fix HCI LESCAN error @ connect_all.bash - (updating didnt workd)
+- [x] Test functionality with gateway and router on (router seems to be unstable)
 - [ ] Analyse how to secure BT handshake (before stablishing connection)
 
 ###Functionality:
@@ -27,7 +27,8 @@ Because of problems between the Router and the Gateway we have to do the followi
 - Start Gateway and Navible front-end
 
 ###Problems:
-Headless router seems to be unstable, sometimes it works fine for hours, sometimes connection keeps dropping, not sure why.
+
+Hci Lescan stops working sometimes, which leads to impossibility for new connections. Only works again when HCI is reseted. 
 
 If IPv6 started and then Navible:
 - It works, and Navible dosnt see the IPv6 modules

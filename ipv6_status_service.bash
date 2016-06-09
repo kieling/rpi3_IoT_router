@@ -7,11 +7,11 @@
 
 MYIP="fe80::ba27:ebff:febe:1501"
 
-OUTPUT="connected_modules.txt"
+PINGRESULT="connected_modules.txt"
 
-OUTPUT2="gateway/navible/public/data.csv"
+LIST="gateway/navible/public/data.csv"
 
-SLEEPTIME=2s
+SLEEPTIME=15s
 
 CONNECTED=0
 CONNECTED_AUX=0
@@ -19,20 +19,21 @@ CONNECTED_AUX=0
 CHECK_NEW=0
 
 function ping_and_log {
-	rm -f $OUTPUT2
-
 	# write result of a ipv6 broadcast to file
-        echo "$(ping6 -I bt0 -c 2 ff02::1 | grep "64 bytes from" | grep -v "$MYIP" | awk '{print substr($4,1,length($4)-1)}')" > $OUTPUT
+	rm -f $PINGRESULT
+        echo "$(ping6 -I bt0 -c 2 ff02::1 | grep "64 bytes from" | grep -v "$MYIP" | awk '{print substr($4,1,length($4)-1)}')" > $PINGRESULT
 
-        echo "Local IP, Global IP" > $OUTPUT2;
+	# clean file and variables
+	rm -f $LIST
+	CONNECTED_AUX=0
 
-        CONNECTED_AUX=0
-
+	# bug = check if arg == NULL
+        echo "Local IP, Global IP" > $LIST
 	while read -r arg;
         do
-                echo "$arg,2005${arg:4:${#arg}}" >> $OUTPUT2;
+                echo "$arg,2005${arg:4:${#arg}}" >> $LIST;
                 CONNECTED_AUX=$((CONNECTED_AUX+1));
-	done <<< "$(cat $OUTPUT)"
+	done <<< "$(cat $PINGRESULT)"
 
 #	echo "Connected aux: $CONNECTED_AUX   Connected: $CONNECTED"
 }
@@ -40,6 +41,7 @@ function ping_and_log {
 # Main loop
 while true;
 do
+	echo " "
 	echo "Connected Modules: "
 	echo "Router IP Address: $MYIP"
 
@@ -50,26 +52,25 @@ do
 
 		echo "At least one module was disconnected, trying to reconnect..."
 		bash connect_all.bash
+		sleep 3s
 		ping and log
-
+		
 		if [ "$CONNECTED_AUX" -lt "$CONNECTED" ]; then
-			sleep 3s
 			bash connect_all.bash
+			sleep 3s
 			ping and log
 
 			if [ "$CONNECTED_AUX" -lt "$CONNECTED" ]; then
-                     		sleep 3s
                         	bash connect_all.bash
-                     		ping and log
+                     		sleep 3s
+				ping and log
 	                fi
 		fi
 	else
 		CONNECTED=$CONNECTED_AUX;
 	fi
 
-	rm -f $OUTPUT
-	cat $OUTPUT2
-
+	cat $LIST
 	sleep $SLEEPTIME;
 
 	# Handles new modules every X sleeptimes

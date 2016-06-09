@@ -11,7 +11,7 @@
 `sudo rpi-update`<br>
 
 - Dependencies for Nordic Headless Router:<br>
-`sudo apt-get install bluez radvd libcap-ng0`<br>
+`sudo apt-get install bluez pi-bluetooth radvd libcap-ng0`<br>
 
 - Dependencies for SIG Gateway Router<br>
 `sudo apt-get install curl`<br>

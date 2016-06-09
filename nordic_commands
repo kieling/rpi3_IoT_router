@@ -1,6 +1,9 @@
 # Run as root
 sudo su
 
+# CHeck Bluez version
+bluetoothd -v
+
 # Run radvd first 
 # set ipv6 forwarding
 echo 1 > /proc/sys/net/ipv6/conf/all/forwarding
@@ -28,7 +31,6 @@ ifconfig
 
 # IPv6 ips of our modules
 ping 2005::2e5:19ff:fe57:f219
-
 ping 2005::2ca:73ff:fe45:2952
 
 # Try to ping the device using its link-local address, for example, on bt0 interface.
