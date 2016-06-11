@@ -44,18 +44,18 @@ Go to /boot and execute:<br>
 If something goes wrong you can edit the config.txt in your sd card and comment the line with the new kernel.<br>
 
 ### Updating Bluez
-The current version available at the Raspbian repositories (5.23) is outdated and full of bugs. The version I used was 5.4.
-Download: `http://www.kernel.org/pub/linux/bluetooth/bluez-5.40.tar.xz`<br>
-Patch the sources to make them compatible with the Pi: <br>
+The current version available at the Raspbian repositories (5.23) is outdated and full of bugs. Updating it to the last version (5.40) brought stability and fixed some issues within the router. 
+- Download: `http://www.kernel.org/pub/linux/bluetooth/bluez-5.40.tar.xz`<br>
+- To build Bluez we need: <br>
+`sudo apt-get install autoconf glib2.0 libglib2.0-dev libdbus-1-dev libudev-dev libical-dev libreadline-dev`
+- Patch the sources to make them compatible with the Pi: <br>
 ```
 cd bluez-5.40
 wget https://gist.github.com/pelwell/c8230c48ea24698527cd/archive/3b07a1eb296862da889609a84f8e10b299b7442d.zip
 unzip 3b07a1eb296862da889609a84f8e10b299b7442d.zip
 git apply  -v c8230c48ea24698527cd-3b07a1eb296862da889609a84f8e10b299b7442d/*
 ```
-To build Bluez we need: <br>  
-`sudo apt-get install autoconf glib2.0 libglib2.0-dev libdbus-1-dev libudev-dev libical-dev libreadline-dev`
-Configure the build: 
+- Configure the build:
 ```
 ./configure --prefix=/usr \
             --mandir=/usr/share/man \
@@ -64,7 +64,7 @@ Configure the build:
             --enable-experimental \
             --enable-maintainer-mode
 ```
-Compile and install: 
+- Compile and install: <br>
 `make && sudo make install`
 
 ### Configuring Radvd
