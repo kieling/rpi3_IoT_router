@@ -12,7 +12,7 @@
 
 - Dependencies for Nordic Headless Router:<br>
 `sudo apt-get install bluez pi-bluetooth radvd libcap-ng0`<br> 
-Bluez need to be updated, check below<br>
+bluez package need to be updated manually, check below<br>
 
 - Dependencies for SIG Gateway Router<br>
 `sudo apt-get install curl`<br>
