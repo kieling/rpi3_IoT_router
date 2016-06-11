@@ -11,7 +11,8 @@
 `sudo rpi-update`<br>
 
 - Dependencies for Nordic Headless Router:<br>
-`sudo apt-get install bluez pi-bluetooth radvd libcap-ng0`<br>
+`sudo apt-get install bluez pi-bluetooth radvd libcap-ng0`<br> 
+Bluez need to be updated, check below<br>
 
 - Dependencies for SIG Gateway Router<br>
 `sudo apt-get install curl`<br>
@@ -41,6 +42,30 @@ Go to /boot and execute:<br>
 `sudo sh -c 'echo "kernel=vmlinuz-4.4.8-kernelimg-v7+" >> config.txt'`<br>
 - Reboot your Pi and it's done. <br>
 If something goes wrong you can edit the config.txt in your sd card and comment the line with the new kernel.<br>
+
+### Updating Bluez
+The current version available at the Raspbian repositories (5.23) is outdated and full of bugs. The version I used was 5.4.
+Download: `http://www.kernel.org/pub/linux/bluetooth/bluez-5.40.tar.xz`<br>
+Patch the sources to make them compatible with the Pi: <br>
+```
+cd bluez-5.40
+wget https://gist.github.com/pelwell/c8230c48ea24698527cd/archive/3b07a1eb296862da889609a84f8e10b299b7442d.zip
+unzip 3b07a1eb296862da889609a84f8e10b299b7442d.zip
+git apply  -v c8230c48ea24698527cd-3b07a1eb296862da889609a84f8e10b299b7442d/*
+```
+To build Bluez we need: <br>  
+`sudo apt-get install autoconf glib2.0 libglib2.0-dev libdbus-1-dev libudev-dev libical-dev libreadline-dev`
+Configure the build: 
+```
+./configure --prefix=/usr \
+            --mandir=/usr/share/man \
+            --sysconfdir=/etc \
+            --localstatedir=/var \
+            --enable-experimental \
+            --enable-maintainer-mode
+```
+Compile and install: 
+`make && sudo make install`
 
 ### Configuring Radvd
 Add bt0 and eth0 interface into the file /etc/radvd.conf, so that we provide a global ipv6 address for the bt modules. 
