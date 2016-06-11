@@ -5,7 +5,7 @@ The base codes used here were provided by Nordic Semiconductors and Bluetooth SI
 - [x] Finish SETUP.md
 - [x] Add IPv6 connected modules to the front-end 
 - [x] Add Reconnect service to support failures (X tries)
-- [ ] Fix HCI LESCAN error @ connect_all.bash - (reported to be fixed in newer Bluez versions, but not yet compatible for the Pi)
+- [x] Fix HCI LESCAN error @ Updated Bluez to the last version fixed it 
 - [x] Test functionality with gateway and router on (router seems to be unstable)
 - [ ] Analyse how to secure BT handshake (before stablishing connection)
 
@@ -27,7 +27,7 @@ Because of problems between the Router and the Gateway we have to do the followi
 - Start Gateway and Navible front-end
 
 ###Problems:
-Hci Lescan stops working sometimes, which leads to impossibility for new connections. Only works again when HCI is reseted. 
+If the gateway tries to connect to a IPv6 module, it becomes unconectable by the router.
 
 If IPv6 started and then Navible:
 - It works, and Navible dosnt see the IPv6 modules
