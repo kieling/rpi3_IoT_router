@@ -8,15 +8,13 @@ COMMAND="cat result.txt"
  
 echo "Scan and connect to all devices..."
 
-# Tries to kill hcitool first, in case any remaining scan is still active
-#sudo pkill --signal SIGINT hcitool
-
 # Added sleep to avoid Lescan bugs (when too frequently)
 # seems to fix them 
 #sleep 1s
 
 # Lescan for 5 seconds, then kill it
-sudo hcitool lescan --passive | grep -v "LE" > $FILE & sleep 3s
+eval "sudo hcitool lescan --passive | grep -v "LE" > $FILE & sleep 3s"
+
 sudo pkill --signal SIGINT hcitool
 
 # same as above
