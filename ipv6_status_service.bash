@@ -11,7 +11,7 @@ PINGRESULT="connected_modules.txt"
 
 LIST="gateway/navible/public/data.csv"
 
-SLEEPTIME=15s
+SLEEPTIME=5s
 
 CONNECTED=0
 CONNECTED_AUX=0
@@ -31,8 +31,10 @@ function ping_and_log {
         echo "Local IP, Global IP" > $LIST
 	while read -r arg;
         do
-                echo "$arg,2005${arg:4:${#arg}}" >> $LIST;
-                CONNECTED_AUX=$((CONNECTED_AUX+1));
+		if [[ $arg ]]; then
+                	echo "$arg,2005${arg:4:${#arg}}" >> $LIST;
+                	CONNECTED_AUX=$((CONNECTED_AUX+1));
+		fi 
 	done <<< "$(cat $PINGRESULT)"
 
 #	echo "Connected aux: $CONNECTED_AUX   Connected: $CONNECTED"
@@ -53,22 +55,24 @@ do
 		echo "At least one module was disconnected, trying to reconnect..."
 		bash connect_all.bash
 		sleep 3s
-		ping and log
+		ping_and_log
 		
 		if [ "$CONNECTED_AUX" -lt "$CONNECTED" ]; then
 			bash connect_all.bash
 			sleep 3s
-			ping and log
+			ping_and_log
 
 			if [ "$CONNECTED_AUX" -lt "$CONNECTED" ]; then
                         	bash connect_all.bash
                      		sleep 3s
-				ping and log
-	                fi
+				ping_and_log
+	  		fi
 		fi
-	else
-		CONNECTED=$CONNECTED_AUX;
-	fi
+	fi 
+
+	# set new connected var (give up on retrying)
+	CONNECTED=$CONNECTED_AUX
+	
 
 	cat $LIST
 	sleep $SLEEPTIME;
@@ -76,6 +80,7 @@ do
 	# Handles new modules every X sleeptimes
 	CHECK_NEW=$[CHECK_NEW+1];
 	if [ "$CHECK_NEW" == 5 ]; then
+		echo " " 
 		echo "Checking for new connected modules..."
 		bash connect_all.bash
 		CHECK_NEW=0

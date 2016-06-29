@@ -6,6 +6,7 @@ The base codes used here were provided by Nordic Semiconductors and Bluetooth SI
 - [x] Add IPv6 connected modules to the front-end 
 - [x] Add Reconnect service to support failures (X tries)
 - [x] Fix HCI LESCAN error @ Updated Bluez to the last version fixed it 
+- [ ] HCI lescan not yet fixd
 - [x] Test functionality with gateway and router on (router seems to be unstable)
 - [ ] Analyse how to secure BT handshake (before stablishing connection)
 
